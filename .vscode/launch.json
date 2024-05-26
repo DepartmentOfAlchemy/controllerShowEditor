@@ -5,36 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch",
-            "type": "cppdbg",
+            "name": "(lldb-mac) Launch",
+            "type": "lldb",
             "request": "launch",
-            "linux": {
-                "program": "${workspaceRoot}/out/myapp",
-                "MIMode": "gdb",
-                "miDebuggerPath": "/usr/bin/gdb",
-            },
-            "osx": {
-                "program": "${workspaceRoot}/out/myapp",
-                "MIMode": "lldb"
-            },
-            "windows": {
-                "program": "${workspaceRoot}\\out\\myapp.exe",
-                "MIMode": "gdb",
-                "miDebuggerPath": "C:\\mingw-w64\\mingw64\\bin\\gdb.exe"
-            },  
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/out",
-            "program": "${workspaceFolder}/out/myapp",
-            "environment": [],
-            "externalConsole": false,
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "Compile & Link"
+            "program": "${workspaceFolder}/build/main.app",
+            "preLaunchTask": "Build with CMake"
+        },
+        {
+            "name": "(lldb-linux) Launch",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/main",
+            "preLaunchTask": "Build with CMake"
+        },
+        {
+            "name": "(msvc) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\Debug\\main.exe",
+            "preLaunchTask": "Build with CMake"
         }
     ]
 }
